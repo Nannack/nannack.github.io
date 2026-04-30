@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<title>Un fantome !</title>
+	<style>
+    .parent {
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	.image1 {
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	#image2 {
+		position: absolute;
+		top: 30px;
+		left: 30px;
+		display:block;
+	}
+	#image3 {
+		position: absolute;
+		top:630px;
+		left:600px;
+		display:none;
+	}
+	#image4 {
+		position: absolute;
+		top:630px;
+		left:600px;
+		display:none;
+	}
+	#text {
+		display:none
+	}
+	</style>
+</head>
+<body>
+	<p>Vous entrez dans la salle quand soudainement, un fantome emerge du sol ! Cliquez vite dessus!</p>
+	<div class="parent">
+		<img class="image1" src="Images/empty_room.jpg" alt="Woops" width= 1000 height=700 >
+		<img onload="deplacement()" onclick="montrer()" id="image2" src="Images/fantome.png" alt="Woops" width=90 height=80>
+		<img onmouseover="change1()" id="image3" src="Images/scroll.png" alt="woops" width=70 height=50>
+		<img onmouseout="change2()" id="image4" src="Images/code.jpg" alt="woops" width=70 height=50>
+	</div>
+	<p id="text">Tient, quel est cette chose que le fantome nous a laisse ?</p>
+	<ul>
+		<li><a href="page2.html">Je veux retourner en arriere</a></li>
+	</ul>
+	<script>
+	function montrer() {
+		document.getElementById("image3").style.display="block";
+		document.getElementById("text").style.display="block";
+		document.getElementById("image2").style.display="none";
+	}
+	function change1() {
+		document.getElementById("image3").style.display="none";
+		document.getElementById("image4").style.display="block";
+	}
+	function change2(){
+		document.getElementById("image4").style.display="none";
+		document.getElementById("image3").style.display="block";
+	}
+	var id = null;
+	function deplacement() {
+		clearInterval(id);
+		var fantom = document.getElementById("image2");
+		var x = 2;
+		var x_pos = 10;
+		var y = 2;
+		var y_pos = 10;
+		id = setInterval(frame,10);
+		function frame(){
+			if (fantom.style.display == "none") {
+				clearInterval(id);
+			}
+			else {
+				x_pos += x;
+				y_pos += y;
+				fantom.style.top = y_pos + 'px';
+				fantom.style.left = x_pos + 'px';
+				if (y_pos >= 620 || y_pos <= 0) {
+					y=-y;
+					y_pos += y;
+				}
+				if (x_pos >= 930 || x_pos <= 0) {
+					x=-x;
+					x_pos += x;
+				}
+			}
+		}
+	}
+	</script>
+</body>
+</html>

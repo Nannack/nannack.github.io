@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<title>Challenge</title>
+	<style>
+		#arriere_plan {
+			position:relative;
+			top:0;
+			left:0;
+		}
+
+		#boutton {
+			display:block;
+		}
+
+		.joueur {
+			position:absolute;
+			top:200px;
+			left:100px;
+			display:none;
+		}
+		
+		.ordi {
+			position:absolute;
+			top:200px;
+			left:400px;
+			display:none;
+		}
+		#fin {
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<p>Vous traversez la porte et avancez aveuglément dans le noir. Vous arrivez dans une salle avec une vieille dame.</p>
+	<p>La vieille dame vous dit "Prouvez que vous êtes dignes de progresser dans ce fort en me battant au légendaire jeux des anciens mages !"</p>
+	<img id="arrier_plan" src="Images/old_wall.jpg" alt="Woops" width="600">
+	<img class="joueur" src="Images/rock.jpg" alt="Woops" width="100">
+	<img class="joueur" src="Images/scissors.jpg" alt="Woops" width="100">
+	<img class="joueur" src="Images/paper.jpg" alt="Woops" width="100">
+	<img class="ordi" src="Images/rock.jpg" alt="Woops" width="100">
+	<img class="ordi" src="Images/scissors.jpg" alt="Woops" width="100">
+	<img class="ordi" src="Images/paper.jpg" alt="Woops" width="100">
+	<button id="boutton" onclick="pfc()" type="button">Jouer au pierre feuille ciseaux</button>
+	<p><a id="fin" href="pageFin.html">vous pouvez partir</a></p>
+	<script>
+	function randomInt(min, max) {
+		return Math.floor(Math.random() * (max - min) ) + min;
+	}
+	function pfc() {
+		//On commence par cacher les images, utile uniquement à partir de la 2e partie
+		for (var i = 0; i<3; i++) {
+			document.getElementsByClassName("joueur")[i].style.display="none";
+			document.getElementsByClassName("ordi")[i].style.display="none";
+		}
+		var choix = prompt("Choisis : pierre, feuille ou ciseaux ?");
+		var choix_ordi = randomInt(1,3)
+		if (choix == "pierre") {
+			document.getElementsByClassName("joueur")[0].style.display="block";
+			if (choix_ordi == 1) {
+				document.getElementsByClassName("ordi")[0].style.display="block";
+				alert("Egalité, recommencez.")
+			}
+			else if (choix_ordi == 2) {
+				document.getElementsByClassName("ordi")[1].style.display="block";
+				alert("Vous avez gagné ! La sorcière n'en croit pas ses yeux. Elle s'apprête à parler, mais soudainement elle se met à fondre ! Vous pouvez continuer.")
+				document.getElementById("boutton").style.display="none";
+				document.getElementById("fin").style.display="block";
+			}
+			else {
+				document.getElementsByClassName("ordi")[2].style.display="block";
+				alert("Vous avez perdu. La sorcière vous dit que vous pouvez recommencer autant de fois que vous le souhaitait.")
+			}
+		}
+		else if (choix == "ciseaux") {
+			document.getElementsByClassName("joueur")[1].style.display="block";
+			if (choix_ordi == 2) {
+				document.getElementsByClassName("ordi")[1].style.display="block";
+				alert("Egalité, recommencez.")
+			}
+			else if (choix_ordi == 3) {
+				document.getElementsByClassName("ordi")[2].style.display="block";
+				alert("Vous avez gagné ! La sorcière n'en croit pas ses yeux. Elle s'apprête à parler, mais soudainement elle se met à fondre ! Vous pouvez continuer.")
+				document.getElementById("boutton").style.display="none";
+				document.getElementById("fin").style.display="block";
+			}
+			else {
+				document.getElementsByClassName("ordi")[0].style.display="block";
+				alert("Vous avez perdu. La sorcière vous dit que vous pouvez recommencer autant de fois que vous le souhaitait.")
+			}
+		}
+		else if (choix == "feuille") {
+			document.getElementsByClassName("joueur")[2].style.display="block";
+			if (choix_ordi == 3) {
+				document.getElementsByClassName("ordi")[0].style.display="block";
+				alert("Egalité, recommencez.")
+			}
+			else if (choix_ordi == 1) {
+				document.getElementsByClassName("ordi")[0].style.display="block";
+				alert("Vous avez gagné ! La sorcière n'en croit pas ses yeux.")
+				document.getElementById("boutton").style.display="none";
+				document.getElementById("fin").style.display="block";
+			}
+			else {
+				document.getElementsByClassName("ordi")[1].style.display="block";
+				alert("Vous avez perdu. La sorcière vous dit que vous pouvez recommencer autant de fois que vous le souhaitait. Parce que c'est une vieille dame qui s'embête")
+			}
+		}
+		else {
+			alert("Je n'ai pas compris ton choix. Recommence.");
+			pfc();
+		}
+	}
+	</script>
+</body>
+</html>

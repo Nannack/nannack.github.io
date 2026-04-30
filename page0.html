@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<title>Vous avez vaillament fuit</title>
+<style>
+#cacher {
+	display:none;
+}
+#camoufle {
+	cursor: pointer;
+	color: blue;
+}
+</style>
+</head>
+<body>
+	<p>Bon, vous retournez sur vos pas. Vous emprunter ce dont vous vous souvenez du chemin, jusqu'a tomber sur un bouleau. Que faites vous ?</p>
+	<img src="Images/bouleau.jpg" alt="woops" height="600">
+	<ul>
+		<p id="camoufle" onclick="montrer()"</p>
+		<li><a href="page0_2.html">Je vais tout droit</a></li>
+		<li><a href="page0_3.html">Je vais à droite, et retrace mes pas</a></li>
+	</ul>
+	<p id="cacher">C'est une foret. Il y a des arbres a votre droite, devant vous, derriere vous et a votre gauche. Ceux a votre gauche ont des traces de griffures. Et en face de vous, evidemment, se trouve le bouleau.</p>
+	<script>
+		function montrer() {
+			document.getElementById("cacher").style.display="block"
+			document.getElementById("camoufle").style.color="purple"
+		}
+	</script>
+</body>
+</html>

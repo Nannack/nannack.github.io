@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<title>Une porte</title>
+	<style>
+	.camoufle {
+		cursor: pointer;
+		color: blue;
+		display:block;
+	}
+	
+	#image1 {
+		position:relative;
+		top:0;
+		left:0;
+		display:block;
+	}
+	
+	#image2 {
+		position:relative;
+		top:0;
+		left:0;
+		display:none;
+	}
+	
+	#camoufle2 {
+		display:none;
+	}
+	</style>
+</head>
+<body>
+	<p>Vous arrivez nez a nez avec une porte. Que faire ?</p>
+	<img onload="hide()" id="image1" src="Images/door_closed.jpg" alt="Woops" width="600" height="400">
+	<img id="image2" src="Images/door_open.jpg" alt="woops" width="600" height="400">
+	<div>
+	<ul>
+		<li class="camoufle" onclick="bloque()"><u>Je tente d'ouvrir la porte</u></li>
+		<li class="camoufle" onclick="dialogue()"><u>Je colle mon oreille a la porte</u></li>
+		<li><a href="page2.html">Je veux retourner en arriere</a></li>
+		<li class="camoufle" onclick="mdp()"><u>Je veux donner le mot de passe</u></li>
+		<li id="camoufle2"><a href="page3.html">Je passe par la porte</a></li>
+	</ul>
+	</div>
+<script>
+	function hide() {
+		document.getElementsByClassName("camoufle")[2].style.display="none";
+	}
+
+	function bloque() {
+		alert("La porte est fermee")
+		document.getElementsByClassName("camoufle")[0].style.color="purple";
+	}
+
+	function dialogue() {
+		alert('Vous entendez murmurer de derriere la porte. Vous pensez entendre "Le mot de passe".')
+		document.getElementsByClassName("camoufle")[1].style.color="purple";
+		document.getElementsByClassName("camoufle")[2].style.display="block";
+	}
+
+	function mdp() {
+		var reponse = prompt("Que repondez-vous ?");
+		if (reponse != null && reponse == "1243") {
+			alert("Vous entendez la porte s'ouvrir");
+			document.getElementById("image1").style.display="none";
+			document.getElementById("image2").style.display="block";
+			document.getElementsByClassName("camoufle")[0].style.display="none";
+			document.getElementsByClassName("camoufle")[1].style.display="none";
+			document.getElementsByClassName("camoufle")[2].style.display="none";
+			document.getElementById("camoufle2").style.display="block";
+		}
+		else {
+			alert("Rien ne se passe...");
+		}
+	}
+</script>
+</body>
+</html>

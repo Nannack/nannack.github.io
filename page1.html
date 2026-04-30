@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset ="utf-8">
+	<title>Debut de l'aventure</title>
+	<style>
+	#cacher {
+		display:none;
+	}
+
+	#camoufle {
+		cursor: pointer;
+		color: blue;
+	}
+	</style>
+</head>
+<body>
+	<p>Vous avancez sur le pont qui vous mène au repère du dragon. Vous lisez une inscription engravee dans le pont, <em>"Choisissez toujours le droit chemin"</em>. De loin, vous pouvez voir une forteresse en ruine. La plupart de ses tours ont été détruites, à l'exception d'une à l'arrière du fort.</p>
+	<img src="Images/pont.jpg" alt="woops" width="600">
+	<p>Le fort est entouré d'une forêt dense. Vous avez eu de grandes difficultés à vous frayer un chemin à travers la forêt, la seul chose vous ayant aidé est les mots d'un sage vivant dans un village aux abords de la foret. Il vous avait dit "<em>Une fois dans la forêt, garde l'oeil ouvert pour les boulots. Passe toujours à leur gauche, et un chemin s'ouvrira à toi</em>"</p>
+	<p>Mais assez de flashbacks. Que faites vous ?</p>
+	<ul>
+		<li><a href="page2.html">J'avance sur le pont</a></li>
+		<li><a href="page1_2.html">Je descend du pont et essaye de trouver une entrée en dessous</a></li>
+		<li><a href="page0.html">Oh mon dieux, le repère d'un dragon ?! Je veux pas mourrir ! Je retourne au village</a></li>
+	</ul>
+	<p id="camoufle" onclick="montrer()"><u></u></p>
+	<p id="cacher">Quoi ? Non, je viens de tout decrire. Choisis autre chose.</p>
+	<script>
+	function montrer() {
+		document.getElementById("cacher").style.display="block"
+		document.getElementById("camoufle").style.color="purple"
+	}
+	</script>
+</body>
+</html>
